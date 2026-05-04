@@ -2,3 +2,5 @@
 import app
 def test_message():
     assert app.get_message() == "Hello from app"
+
+

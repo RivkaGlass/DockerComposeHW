@@ -4,7 +4,5 @@ services:
 
   tests:
     build: ./tests
-    volumes:
-      - ./app:/app
     depends_on:
       - app
