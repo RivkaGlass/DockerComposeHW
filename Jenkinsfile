@@ -27,20 +27,16 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // withCredentials([usernamePassword(
-                //     credentialsId: 'dockerhub-creds',
-                //     usernameVariable: 'DOCKER_USER',
-                //     passwordVariable: 'DOCKER_PASS'
-                // )]) {
-                //     bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS%'
-                //     bat 'docker build -t app-ci:latest ./app'
-                //     bat 'docker tag app-ci:latest estergottliwb/app-ci:latest'
-                //     bat 'docker push estergottliwb/app-ci:latest'
-                // }
-                bat 'docker login -u estergottliwb -p ETti65055!'
-                bat 'docker build -t app-ci-cd:latest ./app'
-                bat 'docker tag app-ci-cd:latest estergottliwb/app-ci-cd:latest'
-                bat 'docker push estergottliwb/app-ci-cd:latest'
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                bat 'docker login -u %DOCKER_USER% -p %DOCKER_PASS%'
+                bat 'docker build -t ci-cd:latest ./app'
+                bat 'docker tag ci-cd:latest estergottliwb/ci-cd:latest'
+                bat 'docker push estergottliwb/ci-cd:latest'
+                }
             }
         }
     }
