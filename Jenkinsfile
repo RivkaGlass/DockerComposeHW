@@ -27,6 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                bat 'docker login -u estergottliwb -p ETti65055!'
                 bat 'docker build -t app-ci:latest ./app'
                 bat 'docker tag app-ci:latest estergottliwb/app-ci:latest'
                 bat 'docker push estergottliwb/app-ci:latest'
