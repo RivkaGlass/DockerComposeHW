@@ -1,0 +1,10 @@
+services:
+  app:
+    build: ./app
+
+  tests:
+    build: ./tests
+    volumes:
+      - ./app:/app
+    depends_on:
+      - app
