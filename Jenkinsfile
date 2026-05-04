@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'docker compose up --abort-on-container-exit'
+                bat 'docker compose up --abort-on-container-exit --exit-code-from tests'
             }
         }
     }
