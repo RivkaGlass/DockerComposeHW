@@ -1,8 +1,11 @@
 services:
   app:
     build: ./app
+    ports:
+      - "5000:5000"
 
   tests:
     build: ./tests
     depends_on:
       - app
+    command: ["pytest", "test_app.py"]
