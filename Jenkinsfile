@@ -39,7 +39,7 @@ pipeline {
                 // }
                 bat 'docker login -u estergottliwb -p ETti65055!'
                 bat 'docker build -t app-ci-cd:latest ./app'
-                bat 'docker tag app-ci:latest estergottliwb/app-ci-cd:latest'
+                bat 'docker tag app-ci-cd:latest estergottliwb/app-ci-cd:latest'
                 bat 'docker push estergottliwb/app-ci-cd:latest'
             }
         }
